@@ -1,20 +1,23 @@
 
-
 services:
   app:
     build: .
+    container_name: mini-app
+    profiles: ["dev"]
     volumes:
       - .:/var/www/html
     environment:
-      - DB_HOST=db
-      - DB_NAME=framework
-      - DB_USER=root
-      - DB_PASS=root
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
     depends_on:
       - db
 
   nginx:
     image: nginx:alpine
+    container_name: mini-nginx
+    profiles: ["dev"]
     ports:
       - "8080:80"
     volumes:
@@ -25,10 +28,14 @@ services:
 
   db:
     image: mysql:8.0
+    container_name: mini-db
     platform: linux/amd64
+    profiles: ["dev"]
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: framework
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
     ports:
       - "3306:3306"
     volumes:

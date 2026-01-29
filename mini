@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Mini Framework Console Runner
+ * 
+ * Agora utilizando Symfony Console via App\Console\Kernel
+ */
+
+$autoload = __DIR__ . '/vendor/autoload.php';
+
+if (!file_exists($autoload)) {
+    die("Composer dependencies not installed. Run 'composer install' first.\n");
+}
+
+require_once $autoload;
+
+// Bootstrap configuration (dotenv, etc) if needed
+$configFile = __DIR__ . '/app/config.php';
+if (file_exists($configFile)) {
+    require_once $configFile;
+}
+
+use App\Console\Kernel;
+
+$kernel = new Kernel();
+$kernel->handle();

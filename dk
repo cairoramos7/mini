@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Docker Wrapper Helper
+# Executes command via Docker if PHP is not local, or proxies to ./mini
+
+# Check for PHP
+if command -v php &> /dev/null; then
+    # PHP is locally available, execute ./mini directly
+    exec php mini "$@"
+else
+    # PHP not found, check for Docker
+    if command -v docker &> /dev/null; then
+        
+        # Determine Docker Compose command
+        if docker compose version &> /dev/null; then
+            DOCKER_CMD="docker compose"
+        elif command -v docker-compose &> /dev/null; then
+             DOCKER_CMD="docker-compose"
+        else
+             echo "Error: PHP not found locally and no docker-compose compatibility found."
+             exit 1
+        fi
+        
+        # Execute inside container
+        # Note: We use 'mini' (the PHP script) inside the container
+        echo "Running via Docker ($DOCKER_CMD exec app)..."
+        exec $DOCKER_CMD exec app php mini "$@"
+    else
+        echo "Error: PHP is not installed and Docker is not found."
+        echo "Please install PHP 8.2+ or Docker to run this project."
+        exit 1
+    fi
+fi
