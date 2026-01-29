@@ -1,6 +1,6 @@
 <?php
 
-class Index extends Controller{
+class IndexController extends Controller{
 	public function index_action(){
 		// $dados['nome'] = $this->getParam('nome');
 		// $dados['sobrenome'] = $this->getParam('sobrenome');

@@ -6,12 +6,12 @@
  * Time: 21:17
  */
 
-class Produtos extends Controller{
+class ProdutosController extends Controller{
 	public function index(){
-		$db = new Produtos_Model();
+		$db = new ProdutosModel();
 
 		// INSERT
-		// $db->insert('posts', [
+		// $db->insert([
 		// 	'titulo' => 'Titulo Aqui',
 		// 	'resumo' => 'resumo aqui',
 		// 	'conteudo' => 'conteudo aqui',
@@ -19,16 +19,16 @@ class Produtos extends Controller{
 		// ]);
 
 		// READ
-		// $db->read('posts', 'id=1');
+		// $db->read(['id' => 1]);
 
 		// UPDATE
-		// $db->update('posts', [
+		// $db->update([
 		// 	'titulo' => 'Novo Titulo',
 		// 	'conteudo' => 'Novo Conteudo'
-		// ], 'id=1');
+		// ], ['id' => 1]);
 
 		// DELETE
-		// $db->delete('posts', 'id=1');
+		// $db->delete(['id' => 1]);
 		//$this->view('produtosIndex');
 	}
 

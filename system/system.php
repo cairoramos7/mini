@@ -66,12 +66,14 @@ class System{
     }
 
     public function run(){
-        $controller_path = CONTROLLERS . $this->_controller . 'Controller.php';
+        $controllerName = ucfirst($this->_controller) . 'Controller';
+        $controller_path = CONTROLLERS . $controllerName . '.php';
+
         if (!file_exists($controller_path))
             die("Houve um erro. O controller não existe.");
 
         require_once($controller_path);
-        $app = new $this->_controller();
+        $app = new $controllerName();
         if (!method_exists($app, $this->_action))
             die("Houve um erro. A action não existe.");
 
