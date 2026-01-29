@@ -28,7 +28,7 @@ class System{
     }
 
     private function setAction(){
-        $ac = (!isset($this->_explode[1]) || $this->_explode[1] == null || $this->_explode[1] == "index" ? "index_action" : $this->_explode[1]);
+        $ac = (!isset($this->_explode[1]) || $this->_explode[1] == null || $this->_explode[1] == "index" ? "index" : $this->_explode[1]);
         $this->_action = $ac;
     }
 

@@ -4,7 +4,11 @@
     "type": "project",
     "require": {
         "vlucas/phpdotenv": "^5.5",
-        "jenssegers/blade": "^1.4"
+        "jenssegers/blade": "^1.4",
+        "filp/whoops": "^2.15",
+        "monolog/monolog": "^3.5",
+        "delight-im/auth": "^8.4",
+        "catfan/medoo": "^2.1"
     },
     "autoload": {
         "psr-4": {

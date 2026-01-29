@@ -29,10 +29,10 @@ class ProdutosController extends Controller{
 
 		// DELETE
 		// $db->delete(['id' => 1]);
-		//$this->view('produtosIndex');
+		//$this->view('produtos.index');
 	}
 
-    public function novos(){
-    	$this->view('produtosNovos');
+    public function create(){
+    	$this->view('produtos.novos');
     }
 }

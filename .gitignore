@@ -1,5 +1,5 @@
 .env
 vendor/
-storage/
 .DS_Store
 .idea/
+.vscode/
