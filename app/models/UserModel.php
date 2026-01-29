@@ -1,16 +1,16 @@
 <?php
 
 class UserModel extends Model {
-    // Define a tabela que esse model representa
-    public $_tabela = "users";
+    // Define table name
+    public $table = "users";
 
     /**
-     * Exemplo de método customizado
-     * Buscar todos os usuários ativos
+     * Custom method example
+     * Get all active users
      */
-    public function getAtivos() {
-        // Usando o Medoo ($this->db) diretamente para queries específicas
-        return $this->db->select($this->_tabela, "*", [
+    public function getActive() {
+        // Using Medoo ($this->db) directly for specific queries
+        return $this->db->select($this->table, "*", [
             "status" => 1
         ]);
     }

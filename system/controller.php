@@ -2,7 +2,7 @@
 
 class Controller extends System{
 
-    protected function view($nome, $vars = null){
+    protected function view($name, $vars = null){
         $views = VIEWS;
         $cache = __DIR__ . '/../storage/views/cache';
 
@@ -16,6 +16,6 @@ class Controller extends System{
         // Se houver variáveis, passa para a view
         $data = (is_array($vars) && count($vars) > 0) ? $vars : [];
 
-        echo $blade->make($nome, $data)->render();
+        echo $blade->make($name, $data)->render();
     }
 }

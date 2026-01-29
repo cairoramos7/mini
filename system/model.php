@@ -4,7 +4,7 @@ use Medoo\Medoo;
 
 class Model {
     protected $db;
-    public $_tabela;
+    public $table;
 
     public function __construct(){
         $this->db = new Medoo([
@@ -16,22 +16,22 @@ class Model {
         ]);
     }
 
-    public function insert(Array $dados){
-        return $this->db->insert($this->_tabela, $dados);
+    public function insert(Array $data){
+        return $this->db->insert($this->table, $data);
     }
 
     public function read($where = null, $columns = "*") {
         if(is_numeric($where)){
-            return $this->db->get($this->_tabela, $columns, ['id' => $where]);
+            return $this->db->get($this->table, $columns, ['id' => $where]);
         }
-        return $this->db->select($this->_tabela, $columns, $where);
+        return $this->db->select($this->table, $columns, $where);
     }
 
-    public function update(Array $dados, $where){
-        return $this->db->update($this->_tabela, $dados, $where);
+    public function update(Array $data, $where){
+        return $this->db->update($this->table, $data, $where);
     }
 
     public function delete($where){
-        return $this->db->delete($this->_tabela, $where);
+        return $this->db->delete($this->table, $where);
     }
 }

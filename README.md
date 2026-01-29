@@ -109,7 +109,7 @@ Your models extend the base `Model` class, which already has **Medoo** configure
 
 ```php
 class ProductModel extends Model {
-    public $_tabela = "products";
+    public $table = "products";
 }
 
 // In Controller:

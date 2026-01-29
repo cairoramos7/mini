@@ -1,45 +1,45 @@
 <?php
 class System{
-    private $_url;
-    private $_explode;
-    public $_controller;
-    public $_action;
-    public $_params;
+    private $url;
+    private $segments;
+    public $controller;
+    public $action;
+    public $params;
 
     public function __construct(){
         $this->setUrl();
-        $this->setExplode();
+        $this->setSegments();
         $this->setController();
         $this->setAction();
         $this->setParams();
     }
 
     private function setUrl(){
-        $_GET['url'] = (isset($_GET['url']) ? $_GET['url'] : 'index/index_action');
-        $this->_url = $_GET['url'];
+        $_GET['url'] = (isset($_GET['url']) ? $_GET['url'] : 'index/index');
+        $this->url = $_GET['url'];
     }
 
-    private function setExplode(){
-        $this->_explode = explode('/', $this->_url);
+    private function setSegments(){
+        $this->segments = explode('/', $this->url);
     }
 
     private function setController(){
-        $this->_controller = $this->_explode[0];
+        $this->controller = $this->segments[0];
     }
 
     private function setAction(){
-        $ac = (!isset($this->_explode[1]) || $this->_explode[1] == null || $this->_explode[1] == "index" ? "index" : $this->_explode[1]);
-        $this->_action = $ac;
+        $ac = (!isset($this->segments[1]) || $this->segments[1] == null || $this->segments[1] == "index" ? "index" : $this->segments[1]);
+        $this->action = $ac;
     }
 
     private function setParams(){
-        unset($this->_explode[0], $this->_explode[1]);
-        if(empty(end($this->_explode)))
-            array_pop($this->_explode);
+        unset($this->segments[0], $this->segments[1]);
+        if(empty(end($this->segments)))
+            array_pop($this->segments);
 
         $i = 0;
-        if(!empty($this->_explode)){
-            foreach($this->_explode as $val){
+        if(!empty($this->segments)){
+            foreach($this->segments as $val){
                 if($i % 2 == 0){
                     $ind[] = $val;
                 }else{
@@ -53,20 +53,20 @@ class System{
         }
 
         if(count($ind) == count($value) && !empty($ind) && !empty($value))
-            $this->_params = array_combine($ind, $value);
+            $this->params = array_combine($ind, $value);
         else
-            $this->_params = array();
+            $this->params = array();
     }
 
     public function getParam($name = null){
         if($name != null)
-            return $this->_params[$name];
+            return $this->params[$name];
         else
-            return $this->_params;
+            return $this->params;
     }
 
     public function run(){
-        $controllerName = ucfirst($this->_controller) . 'Controller';
+        $controllerName = ucfirst($this->controller) . 'Controller';
         $controller_path = CONTROLLERS . $controllerName . '.php';
 
         if (!file_exists($controller_path))
@@ -74,10 +74,10 @@ class System{
 
         require_once($controller_path);
         $app = new $controllerName();
-        if (!method_exists($app, $this->_action))
+        if (!method_exists($app, $this->action))
             die("Houve um erro. A action não existe.");
 
-        $action = $this->_action;
+        $action = $this->action;
         $app->$action();
     }
 }
