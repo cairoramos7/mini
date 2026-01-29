@@ -1,20 +1,19 @@
 # Mini Framework PHP
 
-Um framework PHP didático, modernizado para seguir padrões de mercado e boas práticas de desenvolvimento. Este projeto serve como um esqueleto robusto para aplicações PHP, utilizando componentes consolidados.
+Um framework PHP puramente didático. O objetivo deste projeto é servir de base para estudos sobre como estruturas MVC funcionam "por baixo do capô", integrando componentes comuns do ecossistema PHP.
 
 ## 🚀 Principais Features
 
-*   **Arquitetura MVC**: Separação clara entre Models, Views e Controllers.
-*   **Docker Ready**: Ambiente de desenvolvimento completo com Nginx, PHP 8.2-FPM e MySQL 8.0 rodando via Docker Compose.
-*   **Gestão de Dependências**: Uso do [Composer](https://getcomposer.org/) para gerenciar bibliotecas.
-*   **Template Engine**: Integração com o [Laravel Blade](https://github.com/jenssegers/blade) para views poderosas e limpas.
-*   **Banco de Dados Simples**: Uso do [Medoo](https://medoo.in/) para abstração de banco de dados (SQL Builder).
-*   **Rotas Automáticas**: Sistema de rotas baseado em convenção (Controller/Action).
-*   **Segurança**:
-    *   Variáveis de ambiente (`.env`).
-    *   Helper de Autenticação (`System\Auth`).
-    *   Proteção contra XSS nas views (Blade escape).
-*   **Debug**: Tratamento de erros amigável com [Whoops](https://filp.github.io/whoops/).
+*   **Arquitetura MVC**: Separação entre Models, Views e Controllers.
+*   **Docker Ready**: Ambiente de desenvolvimento com Nginx, PHP 8.2-FPM e MySQL 8.0 via Docker Compose.
+*   **Gestão de Dependências**: Uso do [Composer](https://getcomposer.org/).
+*   **Template Engine**: Integração com o [Laravel Blade](https://github.com/jenssegers/blade) para as views.
+*   **Banco de Dados**: Uso do [Medoo](https://medoo.in/) para facilitar consultas SQL.
+*   **Rotas Simples**: Sistema de rotas baseado em convenção (Controller/Action).
+*   **Segurança Básica**:
+    *   Uso de variáveis de ambiente (`.env`).
+    *   Exemplo de autenticação com `System\Auth`.
+*   **Debug**: Tratamento de erros com [Whoops](https://filp.github.io/whoops/).
 
 ## 🛠 Pré-requisitos
 
