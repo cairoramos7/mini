@@ -18,7 +18,7 @@ Um framework PHP puramente didático. O objetivo deste projeto é servir de base
 ## 🛠 Pré-requisitos
 
 *   [Docker](https://www.docker.com/) e Docker Compose instalados.
-*   Não é necessário ter PHP ou Composer instalados localmente na máquina host.
+*   Não é necessário ter PHP ou Composer instalados localmente no host (tudo roda via script `mini`/`dk`).
 
 ## 📦 Como Instalar
 
@@ -32,20 +32,38 @@ Um framework PHP puramente didático. O objetivo deste projeto é servir de base
     ```bash
     cp .env.example .env
     ```
-    *Edite o arquivo `.env` se precisar alterar credenciais do banco.*
+    *Edite o arquivo `.env` para suas credenciais.*
 
-3.  **Subir o Ambiente Docker:**
+3.  **Iniciar Aplicação (via Docker):**
     ```bash
-    docker-compose up -d --build
+    # Usando o profile 'dev' para subir tudo
+    docker compose --profile dev up -d --build
     ```
 
-4.  **Instalar Dependências (via Container):**
+4.  **Instalar Dependências:**
     ```bash
-    docker-compose run --rm app composer install
+    # O script dk wrapper facilita o uso do container
+    ./dk composer install
     ```
 
 5.  **Acessar:**
     Abra o navegador em `http://localhost:8080`.
+
+## 🚀 CLI (Artisan-style)
+
+O framework possui uma ferramenta de linha de comando poderosa.
+
+*   **No Host (Mac/Linux)**: Use `./dk <comando>`
+*   **No Container**: Use `php mini <comando>`
+
+### Comandos Úteis
+```bash
+./dk list                   # Lista todos os comandos
+./dk make:controller User   # Cria UsersController
+./dk make:model Product     # Cria ProductModel
+./dk make:migration CreateUsers # Cria migration do Phinx
+./dk clear:cache            # Limpa cache do Blade
+```
 
 ## 📂 Estrutura de Pastas
 

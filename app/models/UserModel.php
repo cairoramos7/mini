@@ -4,6 +4,14 @@ class UserModel extends Model {
     // Define table name
     public $table = "users";
 
+    // Mass assignment protection
+    protected $fillable = [
+        'name',
+        'email',
+        'password', 
+        'status'
+    ];
+
     /**
      * Custom method example
      * Get all active users

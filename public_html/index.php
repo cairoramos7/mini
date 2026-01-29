@@ -31,5 +31,10 @@ spl_autoload_register(function($file){
     }
 });
 
+// Register Example Listeners
+EventManager::listen('user.created', function($data) {
+    (new WelcomeEmailListener())->handle($data);
+});
+
 $start = new System();
 $start->run();

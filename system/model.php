@@ -5,6 +5,7 @@ use Medoo\Medoo;
 class Model {
     protected $db;
     public $table;
+    protected $fillable = [];
 
     public function __construct(){
         $this->db = new Medoo([
@@ -16,7 +17,17 @@ class Model {
         ]);
     }
 
+    protected function filterFillable(Array $data) {
+        if (empty($this->fillable)) {
+            return $data;
+        }
+
+        // Return only keys that are in $fillable
+        return array_intersect_key($data, array_flip($this->fillable));
+    }
+
     public function insert(Array $data){
+        $data = $this->filterFillable($data);
         return $this->db->insert($this->table, $data);
     }
 
@@ -28,6 +39,7 @@ class Model {
     }
 
     public function update(Array $data, $where){
+        $data = $this->filterFillable($data);
         return $this->db->update($this->table, $data, $where);
     }
 
