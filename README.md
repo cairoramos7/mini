@@ -67,56 +67,56 @@ mini/
 
 ## 💻 Como Usar
 
-### Criar um Controller
-Crie um arquivo em `app/controllers/` seguindo o padrão `NomeController.php`:
+### Create a Controller
+Create a file in `app/controllers/` following the pattern `NameController.php`:
 
 ```php
 <?php
-class ProdutosController extends Controller {
+class ProductsController extends Controller {
     
-    // Rota: /produtos ou /produtos/index
+    // Route: /products or /products/index
     public function index() {
-        $produtos = (new ProdutosModel())->read();
-        $this->view('produtos.index', ['produtos' => $produtos]);
+        $products = (new ProductModel())->read();
+        $this->view('products.index', ['products' => $products]);
     }
 
-    // Rota: /produtos/create
+    // Route: /products/create
     public function create() {
-        $this->view('produtos.create');
+        $this->view('products.create');
     }
 }
 ```
 
-### Criar uma View
-Crie um arquivo em `app/views/` com a extensão `.blade.php`.
-Exemplo `app/views/produtos/index.blade.php`:
+### Create a View
+Create a file in `app/views/` with `.blade.php` extension.
+Example `app/views/products/index.blade.php`:
 
 ```html
 @extends('layout')
 
-@section('title', 'Lista de Produtos')
+@section('title', 'Product List')
 
 @section('content')
-    <h1>Meus Produtos</h1>
-    @foreach($produtos as $produto)
-        <p>{{ $produto['nome'] }}</p>
+    <h1>My Products</h1>
+    @foreach($products as $product)
+        <p>{{ $product['name'] }}</p>
     @endforeach
 @endsection
 ```
 
-### Usar o Banco de Dados (Model)
-Seus models estendem a classe base `Model`, que já possui o **Medoo** configurado.
+### Use Database (Model)
+Your models extend the base `Model` class, which already has **Medoo** configured.
 
 ```php
-class ProdutosModel extends Model {
-    public $_tabela = "produtos";
+class ProductModel extends Model {
+    public $_tabela = "products";
 }
 
-// No Controller:
-$model = new ProdutosModel();
-$todos = $model->read(); // SELECT * FROM produtos
-$um = $model->read(1);   // SELECT * FROM produtos WHERE id = 1
-$model->insert(['nome' => 'Novo Item']);
+// In Controller:
+$model = new ProductModel();
+$all = $model->read(); // SELECT * FROM products
+$one = $model->read(1);   // SELECT * FROM products WHERE id = 1
+$model->insert(['name' => 'New Item']);
 ```
 
 ### Autenticação

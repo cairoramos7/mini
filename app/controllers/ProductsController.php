@@ -6,9 +6,9 @@
  * Time: 21:17
  */
 
-class ProdutosController extends Controller{
+class ProductsController extends Controller{
 	public function index(){
-		$db = new ProdutosModel();
+		$db = new ProductModel();
 
 		// INSERT
 		// $db->insert([
@@ -29,10 +29,10 @@ class ProdutosController extends Controller{
 
 		// DELETE
 		// $db->delete(['id' => 1]);
-		//$this->view('produtos.index');
+		//$this->view('products.index');
 	}
 
     public function create(){
-    	$this->view('produtos.novos');
+    	$this->view('products.create');
     }
 }

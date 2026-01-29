@@ -1,5 +1,5 @@
 <?php
 
-class ProdutosModel extends Model{
+class ProductModel extends Model{
 	public $_tabela = "posts";
 }

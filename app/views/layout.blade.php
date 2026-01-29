@@ -26,8 +26,8 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="{{ $_SERVER['REQUEST_URI'] == '/' ? 'active' : '' }}"><a href="/">Home</a></li>
-                    <li><a href="/produtos">Produtos</a></li>
-                    <li><a href="/produtos/create">Novo Produto</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/products/create">New Product</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
